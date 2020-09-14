@@ -9,6 +9,9 @@ const seccionVolver = document.querySelectorAll('.volver');
 const botonVolver = document.querySelector('#btn-volver');
 const busquedaCiudad = document.querySelector('#busqueda-ciudad');
 const sugerencia = document.querySelector('#sugerencia');
+const mapid = document.querySelector('#mapid');
+const resultados = document.querySelector('#resultados');
+const botonProvincia = document.querySelectorAll('.btn-provincia');
 
 const ciudades = [];
 const partesDescripcion = [
@@ -28,20 +31,20 @@ const partesDescripcion = [
 	'eblin',
 ];
 const colorDescripcion = [
-	'red',
-	'red',
-	'darkslategrey',
-	'lavender',
-	'lavender',
-	'darkblue',
-	'darkblue',
-	'darkblue',
-	'darkblue',
-	'darkslategrey',
-	'lightgrey',
-	'lightblue',
-	'darkgray',
-	'darkgray',
+	'linear-gradient(45deg,rgb(255, 0, 0), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(255, 0, 0), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(47, 79, 79), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(207, 207, 235), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(207, 207, 235), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(0, 0, 139), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(0, 0, 139), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(0, 0, 139), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(0, 0, 139), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(47, 79, 79), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(173, 216, 230), rgb(197, 194, 194)',
+	'linear-gradient(160deg, rgb(173, 216, 230), rgb(245,245,100)',
+	'linear-gradient(45deg,rgb(169, 169, 169), rgb(245,245,245)',
+	'linear-gradient(45deg,rgb(169, 169, 169), rgb(245,245,245)',
 ];
 const iconoDescripcion = [
 	'sun',
@@ -69,34 +72,69 @@ async function indicarClima() {
 indicarClima().then((resultado) => {
 	console.log(resultado);
 	ciudades.push(...resultado);
-	for (let i = 0; i < resultado.length; i++) {
-		const element = resultado[i];
+	// for (let i = 0; i < resultado.length; i++) {
+	// 	const element = resultado[i];
 
-		let ciudad = document.createElement('div');
-		ciudad.setAttribute('class', 'contenedor-ciudad');
+	// 	let ciudad = document.createElement('div');
+	// 	ciudad.setAttribute('class', 'contenedor-ciudad');
 
-		let descripcion = element.weather.description;
-		let icono;
+	// 	let descripcion = element.weather.description;
+	// 	let icono;
 
-		for (let i = 0; i < partesDescripcion.length; i++) {
-			if (descripcion.includes(partesDescripcion[i])) {
-				ciudad.style.backgroundColor = colorDescripcion[i];
-				icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
+	// 	for (let i = 0; i < partesDescripcion.length; i++) {
+	// 		if (descripcion.includes(partesDescripcion[i])) {
+	// 			ciudad.style.backgroundImage = colorDescripcion[i];
+	// 			icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
+	// 		}
+	// 	}
+
+	// 	ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
+	// 	<h2 class="nombre-lugar">${element.province}</h2>
+	// 	<h6 class="fecha">${moment().format('lll')}</h6>
+	// 	<span class="icono">${icono}</span>
+	// 	<h2 class="clima">${element.weather.description}</h2>
+	// 	<p class="temperatura">${element.weather.temp}°</p>
+	// 	<p class="humedad">${element.weather.humidity}% de humedad</p>
+	// 	<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
+	// 	<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
+
+	// 	contenedor.appendChild(ciudad);
+	// }
+});
+
+botonProvincia.forEach((result) => {
+	result.addEventListener('click', function () {
+		contenedor.innerHTML = '';
+		for (let i = 0; i < ciudades.length; i++) {
+			const element = ciudades[i];
+			if (result.textContent == element.province) {
+				let ciudad = document.createElement('div');
+				ciudad.setAttribute('class', 'contenedor-ciudad');
+
+				let descripcion = element.weather.description;
+				let icono;
+
+				for (let i = 0; i < partesDescripcion.length; i++) {
+					if (descripcion.includes(partesDescripcion[i])) {
+						ciudad.style.backgroundImage = colorDescripcion[i];
+						icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
+					}
+				}
+
+				ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
+			<h2 class="nombre-lugar">${element.province}</h2>
+			<h6 class="fecha">${moment().format('lll')}</h6>
+			<span class="icono">${icono}</span>
+			<h2 class="clima">${element.weather.description}</h2>
+			<p class="temperatura">${element.weather.temp}°</p>
+			<p class="humedad">${element.weather.humidity}% de humedad</p>
+			<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
+			<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
+
+				contenedor.appendChild(ciudad);
 			}
 		}
-
-		ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
-		<h2 class="nombre-lugar">${element.province}</h2>
-		<h6 class="fecha">${moment().format('lll')}</h6>
-		<span class="icono">${icono}</span>
-		<h2 class="clima">${element.weather.description}</h2>
-		<p class="temperatura">${element.weather.temp}°</p>
-		<p class="humedad">${element.weather.humidity}% de humedad</p>
-		<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
-		<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
-
-		contenedor.appendChild(ciudad);
-	}
+	});
 });
 
 function sugerirResultados(busqueda) {
@@ -135,7 +173,7 @@ function buscarPorSugerencia(lugar) {
 	let ciudad = ciudades.find((element) => element.name == lugar);
 	console.log(ciudad);
 	contenedor.classList.add('oculto');
-	busquedaCiudad.classList.remove('oculto');
+	resultados.classList.remove('oculto');
 	seccionVolver[0].classList.remove('oculto');
 	opcionesDeBusquedaMostradas.classList.add('oculto');
 	busquedaCiudad.innerHTML = '';
@@ -146,7 +184,7 @@ function buscarPorSugerencia(lugar) {
 	let icono;
 	for (let i = 0; i < partesDescripcion.length; i++) {
 		if (descripcion.includes(partesDescripcion[i])) {
-			nuevaCiudad.style.backgroundColor = colorDescripcion[i];
+			nuevaCiudad.style.backgroundImage = colorDescripcion[i];
 			icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
 		}
 	}
@@ -161,6 +199,14 @@ function buscarPorSugerencia(lugar) {
 		<p class="presion">Presión: ${ciudad.weather.pressure} hPa</p>`;
 
 	busquedaCiudad.appendChild(nuevaCiudad);
+
+	var mymap = L.map('mapid').setView([Number(ciudad.lat), Number(ciudad.lon)], 11);
+	console.log(mymap);
+	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution:
+			'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		maxZoom: 18,
+	}).addTo(mymap);
 }
 
 function clickEnResultadoDeBusqueda(e) {
@@ -177,7 +223,7 @@ function clickEnBuscar(e) {
 		let [resultado] = sugerirResultados(buscador.value);
 		console.log(resultado);
 		contenedor.classList.add('oculto');
-		busquedaCiudad.classList.remove('oculto');
+		resultados.classList.remove('oculto');
 		seccionVolver[0].classList.remove('oculto');
 		opcionesDeBusquedaMostradas.classList.add('oculto');
 
@@ -187,7 +233,7 @@ function clickEnBuscar(e) {
 		let icono;
 		for (let i = 0; i < partesDescripcion.length; i++) {
 			if (descripcion.includes(partesDescripcion[i])) {
-				ciudad.style.backgroundColor = colorDescripcion[i];
+				ciudad.style.backgroundImage = colorDescripcion[i];
 				icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
 			}
 		}
@@ -200,6 +246,14 @@ function clickEnBuscar(e) {
 		<p class="humedad">${resultado.weather.humidity}% de humedad</p>
 		<p class="viento">Viento: ${resultado.weather.wind_speed} km/h</p>
 		<p class="presion">Presión: ${resultado.weather.pressure} hPa</p>`;
+
+		var mymap = L.map('mapid').setView([Number(resultado.lat), Number(resultado.lon)], 13);
+		console.log(mymap);
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution:
+				'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			maxZoom: 18,
+		}).addTo(mymap);
 
 		busquedaCiudad.appendChild(ciudad);
 	}

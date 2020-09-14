@@ -23,11 +23,6 @@
 	box-shadow: inset 2px 2px white, inset -2px -2px grey;
 }
 
-.busqueda-ciudad {
-	display: flex;
-	justify-content: center;
-}
-
 .contenedor-ciudad-seleccionada {
 	border: grey 1px solid;
 	border-radius: 50px;
@@ -37,9 +32,9 @@
 	text-align: center;
 }
 
-.nombre-lugar h1 {
+h1 {
 	font-size: 1.5em;
-	margin-top: 2em;
+	color: rgb(80, 78, 78);
 }
 
 .nombre-lugar h2 {
@@ -159,6 +154,37 @@ p {
 	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 	outline-offset: -2px;
 	background-color: #40e0d0;
+	cursor: pointer;
+}
+
+.main-carousel {
+	margin-top: 2em;
+	height: 7em;
+	margin-bottom: 2em;
+}
+
+.btn-provincia {
+	height: 6em;
+	background-image: linear-gradient(270deg, #40e0d0 0%, #006400 100%);
+	color: #ffffff;
+	font-size: 1em;
+	object-fit: cover;
+	margin-right: 1px;
+	border-radius: 0.7em;
+}
+
+.btn-provincia:hover {
+	color: #110038;
+	outline: 1px dotted #110038;
+	-webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	outline-offset: -2px;
+	background-color: #40e0d0;
+	cursor: pointer;
+}
+
+.btn-provincia.is-selected {
+	background-color: #40e0d0;
 }
 
 .input-inactivo {
@@ -184,6 +210,7 @@ p {
 	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 	outline-offset: -2px;
 	background-color: #40e0d0;
+	cursor: pointer;
 }
 
 #busqueda__opciones {
@@ -212,6 +239,22 @@ p {
 	margin-left: 0.4em;
 	text-align: start;
 	justify-items: start;
+}
+
+.icono {
+	color: white;
+}
+
+.resultados {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#mapid {
+	height: 37em;
+	width: 37em;
 }
 
 .oculto {
@@ -313,6 +356,18 @@ p {
 		height: 2em;
 		margin-top: 0.7em;
 		margin-left: 0.4em;
+	}
+
+	.resultados {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	#mapid {
+		height: 20em;
+		width: 20em;
 	}
 
 	.oculto {
