@@ -40,7 +40,6 @@
 .nombre-lugar h1 {
 	font-size: 1.5em;
 	margin-top: 2em;
-	color: dark;
 }
 
 .nombre-lugar h2 {
@@ -217,4 +216,106 @@ p {
 
 .oculto {
 	display: none;
+}
+
+@media only screen and (max-width: 325px) {
+	.contenedor {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+		width: 22em;
+	}
+
+	.contenedor-ciudad-seleccionada {
+		width: 20em;
+	}
+
+	.contenedor-ciudad-seleccionada {
+		width: 20em;
+	}
+
+	.nombre-lugar h1 {
+		font-size: 1em;
+		margin-top: 1em;
+	}
+
+	.nombre-lugar h2 {
+		font-size: 1em;
+	}
+
+	h2 {
+		font-size: 1em;
+	}
+
+	h3 {
+		font-size: 1em;
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	.temperatura {
+		font-size: 1em;
+	}
+
+	.titulo-general {
+		font-size: 1.5em;
+		margin: 0.5em;
+	}
+
+	.encabezado__contenedor {
+		width: 20em;
+		height: 5.2em;
+		margin: 1em 2em 1em 1em;
+	}
+
+	.encabezado__contenedor__busqueda__texto {
+		font-size: 0.875em;
+		padding-left: 0.4em;
+		left: 2px;
+		bottom: 10px;
+		width: 22em;
+	}
+
+	#buscador-principal {
+		width: 15em;
+		height: 2em;
+		margin-left: 0.4em;
+		padding-left: 1px;
+		font-size: 1em;
+	}
+
+	#btn-buscar {
+		margin-left: 0.5em;
+		font-size: 1em;
+		border: 1px solid #808080;
+		width: 3.5em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+
+	.btn-volver {
+		font-size: 1em;
+		width: 3.5em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+
+	#busqueda__opciones {
+		width: 20em;
+		height: 3em;
+	}
+
+	.sugerencia {
+		font-size: 0.8em;
+		padding: 0.5em 1em;
+		width: 23em;
+		height: 2em;
+		margin-top: 0.7em;
+		margin-left: 0.4em;
+	}
+
+	.oculto {
+		display: none;
+	}
 }
