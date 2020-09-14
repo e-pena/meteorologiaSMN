@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>MeteoAr</title>
 		<link
 			rel="stylesheet"
 			href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
@@ -25,7 +25,35 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<!-- <script src="../moments.js"></script> -->
+		<header class="header">
+			<h1 class="titulo-general">Pronóstico del tiempo en Argentina</h1>
+			<div class="encabezado__contenedor" id="buscador">
+				<div class="encabezado__contenedor__busqueda">
+					<form id="formulario-busqueda">
+						<h3 class="encabezado__contenedor__busqueda__texto">Búsqueda por ciudad</h3>
+						<div class="encabezado__contenedor__busqueda__contenedor">
+							<div class="encabezado__contenedor__busqueda__barra">
+								<input type="text" name="buscador" id="buscador-principal" placeholder="Ingrese la zona" />
+							</div>
+							<div class="encabezado__contenedor__busqueda__boton">
+								<button type="button" class="input-inactivo" id="btn-buscar">Buscar</button>
+							</div>
+						</div>
+						<div id="busqueda__opciones" class="oculto">
+							<button type="button" id="sugerencia" class="sugerencia"></button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="volver oculto">
+				<button id="btn-volver" class="btn-volver" type="button">Volver</button>
+			</div>
+		</header>
+
+		<div id="contenedor" class="contenedor"></div>
+
+		<div id="busqueda-ciudad" class="busqueda-ciudad oculto"></div>
+
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment-with-locales.min.js"
 			integrity="sha256-4HOrwHz9ACPZBxAav7mYYlbeMiAL0h6+lZ36cLNpR+E="

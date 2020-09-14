@@ -2,6 +2,12 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .contenedor {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -17,10 +23,30 @@
 	box-shadow: inset 2px 2px white, inset -2px -2px grey;
 }
 
-h1 {
+.busqueda-ciudad {
+	display: flex;
+	justify-content: center;
+}
+
+.contenedor-ciudad-seleccionada {
+	border: grey 1px solid;
+	border-radius: 50px;
+	margin: 5px;
+	width: 25em;
+	box-shadow: inset 2px 2px white, inset -2px -2px grey;
+	text-align: center;
+}
+
+.nombre-lugar h1 {
 	font-size: 1.5em;
 	margin-top: 2em;
 	color: dark;
+}
+
+.nombre-lugar h2 {
+	font-size: 1.2em;
+	font-weight: lighter;
+	height: 2.5em;
 }
 
 h2 {
@@ -34,13 +60,161 @@ h3 {
 	font-weight: 600;
 }
 
+p {
+	font-size: 1em;
+	font-weight: 600;
+}
+
 .temperatura {
 	font-size: 1.5em;
 }
 
 .titulo-general {
 	text-align: center;
-	font-size: 4em;
+	font-size: 3em;
 	margin: 0.5em;
 	color: green;
+}
+
+.encabezado__contenedor {
+	width: 45em;
+	height: 6.2em;
+	margin: 1em 1em 2em 1em;
+	background-color: #e6e6e6;
+	-webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+	box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+	position: relative;
+}
+
+.encabezado__contenedor__busqueda__texto {
+	font-size: 0.875em;
+	font-weight: bold;
+	color: #ffffff;
+	background-image: linear-gradient(270deg, #40e0d0 0%, #006400 100%);
+	padding-left: 0.4em;
+	position: relative;
+	left: 2px;
+	bottom: 10px;
+	width: 50.5em;
+}
+
+.encabezado__contenedor__busqueda__contenedor {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+#buscador-principal {
+	width: 36em;
+	height: 3em;
+	margin-left: 0.4em;
+	padding-left: 4px;
+	font-size: 1em;
+	background: #ffffff;
+	border: 1px solid #979797;
+	-webkit-box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+	box-shadow: inset -2px -2px 0 0 #e6e6e6, inset 2px 2px 0 0 #000000;
+}
+
+#btn-buscar {
+	margin-left: 0.5em;
+	font-size: 1em;
+	border: 1px solid #808080;
+	width: 6.4em;
+	position: relative;
+	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.volver {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.btn-volver {
+	font-size: 1em;
+	border: 1px solid #808080;
+	width: 6.4em;
+	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn-volver:hover {
+	color: #110038;
+	outline: 1px dotted #110038;
+	-webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	outline-offset: -2px;
+	background-color: #40e0d0;
+}
+
+.input-inactivo {
+	color: #b4b4b4;
+	-webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+	background-color: #e6e6e6;
+}
+
+.input-activo {
+	color: #110038;
+	-webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	background-color: #40e0d0;
+	outline: 1px dotted #110038;
+	outline-offset: -2px;
+}
+
+#btn-buscar:hover {
+	color: #110038;
+	outline: 1px dotted #110038;
+	-webkit-box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
+	outline-offset: -2px;
+	background-color: #40e0d0;
+}
+
+#busqueda__opciones {
+	width: 45em;
+	height: 4em;
+	background: #e6e6e6;
+	-webkit-box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+	box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
+}
+
+.sugerencia {
+	text-align: center;
+	text-decoration: none;
+	color: #110038;
+	font-size: 1em;
+	padding: 0.5em 1.5em;
+	width: 36.5em;
+	height: 2em;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: #f0f0f0;
+	border: 1px solid #808080;
+	-webkit-box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+	box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
+	margin-top: 0.7em;
+	margin-left: 0.4em;
+	text-align: start;
+	justify-items: start;
+}
+
+.oculto {
+	display: none;
 }
