@@ -369,8 +369,15 @@ p {
 	}
 
 	#mapid {
-		height: 20em;
-		width: 20em;
+		height: 24em;
+		width: 24em;
+	}
+
+	.btn-provincia {
+		height: 4em;
+		min-width: 8em;
+		max-width: 8em;
+		font-size: 0.8em;
 	}
 
 	.oculto {
