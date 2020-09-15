@@ -260,6 +260,16 @@ p {
 	width: 37em;
 }
 
+.contenedor-map {
+	display: flex;
+	justify-content: center;
+}
+
+#main-map {
+	height: 85em;
+	width: 60em;
+}
+
 .oculto {
 	display: none;
 }

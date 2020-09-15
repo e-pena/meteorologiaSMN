@@ -28,7 +28,6 @@
 			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 			crossorigin=""
 		/>
-		<link rel="stylesheet" href="node_modules/flickity/css/flickity.css" media="screen" />
 		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
 		<link rel="stylesheet" href="style.css" />
 	</head>
@@ -90,13 +89,16 @@
 
 		<div id="contenedor" class="contenedor"></div>
 
+		<div class="contenedor-map">
+			<div id="main-map"></div>
+		</div>
+
 		<div id="resultados" class="resultados oculto">
 			<div id="busqueda-ciudad" class="busqueda-ciudad"></div>
 			<div id="mapid"></div>
 		</div>
 
 		<script src="node_modules/flickity/dist/flickity.pkgd.min.js"></script>
-		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment-with-locales.min.js"
 			integrity="sha256-4HOrwHz9ACPZBxAav7mYYlbeMiAL0h6+lZ36cLNpR+E="

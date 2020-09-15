@@ -10,6 +10,7 @@ const botonVolver = document.querySelector('#btn-volver');
 const busquedaCiudad = document.querySelector('#busqueda-ciudad');
 const sugerencia = document.querySelector('#sugerencia');
 const mapid = document.querySelector('#mapid');
+const mapaPrincipal = document.querySelector('#main-map');
 const resultados = document.querySelector('#resultados');
 const botonProvincia = document.querySelectorAll('.btn-provincia');
 
@@ -69,37 +70,59 @@ async function indicarClima() {
 	return climasDeLugares;
 }
 
+var mainMap = L.map('main-map').setView([-40.51, -63.63], 4.5);
+console.log(mainMap);
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution:
+		'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	maxZoom: 18,
+}).addTo(mainMap);
+
 indicarClima().then((resultado) => {
 	console.log(resultado);
 	ciudades.push(...resultado);
-	// for (let i = 0; i < resultado.length; i++) {
-	// 	const element = resultado[i];
+	for (let i = 0; i < resultado.length; i++) {
+		const element = resultado[i];
+		const texto = `${element.name}\n${element.weather.temp}°`;
+		L.marker([Number(element.lat), Number(element.lon)], {
+			title: texto,
+		}).addTo(mainMap);
+	}
+});
 
-	// 	let ciudad = document.createElement('div');
-	// 	ciudad.setAttribute('class', 'contenedor-ciudad');
+botonProvincia.forEach((result) => {
+	result.addEventListener('click', function () {
+		contenedor.innerHTML = '';
+		for (let i = 0; i < ciudades.length; i++) {
+			const element = ciudades[i];
+			if (result.textContent == element.province) {
+				let ciudad = document.createElement('div');
+				ciudad.setAttribute('class', 'contenedor-ciudad');
 
-	// 	let descripcion = element.weather.description;
-	// 	let icono;
+				let descripcion = element.weather.description;
+				let icono;
 
-	// 	for (let i = 0; i < partesDescripcion.length; i++) {
-	// 		if (descripcion.includes(partesDescripcion[i])) {
-	// 			ciudad.style.backgroundImage = colorDescripcion[i];
-	// 			icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
-	// 		}
-	// 	}
+				for (let i = 0; i < partesDescripcion.length; i++) {
+					if (descripcion.includes(partesDescripcion[i])) {
+						ciudad.style.backgroundImage = colorDescripcion[i];
+						icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
+					}
+				}
 
-	// 	ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
-	// 	<h2 class="nombre-lugar">${element.province}</h2>
-	// 	<h6 class="fecha">${moment().format('lll')}</h6>
-	// 	<span class="icono">${icono}</span>
-	// 	<h2 class="clima">${element.weather.description}</h2>
-	// 	<p class="temperatura">${element.weather.temp}°</p>
-	// 	<p class="humedad">${element.weather.humidity}% de humedad</p>
-	// 	<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
-	// 	<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
+				ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
+			<h2 class="nombre-lugar">${element.province}</h2>
+			<h6 class="fecha">${moment().format('lll')}</h6>
+			<span class="icono">${icono}</span>
+			<h2 class="clima">${element.weather.description}</h2>
+			<p class="temperatura">${element.weather.temp}°</p>
+			<p class="humedad">${element.weather.humidity}% de humedad</p>
+			<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
+			<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
 
-	// 	contenedor.appendChild(ciudad);
-	// }
+				contenedor.appendChild(ciudad);
+			}
+		}
+	});
 });
 
 botonProvincia.forEach((result) => {
@@ -176,6 +199,7 @@ function buscarPorSugerencia(lugar) {
 	resultados.classList.remove('oculto');
 	seccionVolver[0].classList.remove('oculto');
 	opcionesDeBusquedaMostradas.classList.add('oculto');
+	mapaPrincipal.classList.add('oculto');
 	busquedaCiudad.innerHTML = '';
 
 	let nuevaCiudad = document.createElement('div');
@@ -201,7 +225,6 @@ function buscarPorSugerencia(lugar) {
 	busquedaCiudad.appendChild(nuevaCiudad);
 
 	var mymap = L.map('mapid').setView([Number(ciudad.lat), Number(ciudad.lon)], 11);
-	console.log(mymap);
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution:
 			'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -226,6 +249,7 @@ function clickEnBuscar(e) {
 		resultados.classList.remove('oculto');
 		seccionVolver[0].classList.remove('oculto');
 		opcionesDeBusquedaMostradas.classList.add('oculto');
+		mapaPrincipal.classList.add('oculto');
 
 		let ciudad = document.createElement('div');
 		ciudad.setAttribute('class', 'contenedor-ciudad-seleccionada');
