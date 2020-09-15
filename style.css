@@ -390,6 +390,11 @@ p {
 		font-size: 0.8em;
 	}
 
+	#main-map {
+		height: 75em;
+		width: 30em;
+	}
+
 	.oculto {
 		display: none;
 	}
