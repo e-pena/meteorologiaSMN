@@ -93,41 +93,11 @@ indicarClima().then((resultado) => {
 botonProvincia.forEach((result) => {
 	result.addEventListener('click', function () {
 		contenedor.innerHTML = '';
-		for (let i = 0; i < ciudades.length; i++) {
-			const element = ciudades[i];
-			if (result.textContent == element.province) {
-				let ciudad = document.createElement('div');
-				ciudad.setAttribute('class', 'contenedor-ciudad');
-
-				let descripcion = element.weather.description;
-				let icono;
-
-				for (let i = 0; i < partesDescripcion.length; i++) {
-					if (descripcion.includes(partesDescripcion[i])) {
-						ciudad.style.backgroundImage = colorDescripcion[i];
-						icono = `<i class="fas fa-${iconoDescripcion[i]} fa-3x"></i>`;
-					}
-				}
-
-				ciudad.innerHTML = `<h1 class="nombre-lugar">${element.name}</h1>
-			<h2 class="nombre-lugar">${element.province}</h2>
-			<h6 class="fecha">${moment().format('lll')}</h6>
-			<span class="icono">${icono}</span>
-			<h2 class="clima">${element.weather.description}</h2>
-			<p class="temperatura">${element.weather.temp}°</p>
-			<p class="humedad">${element.weather.humidity}% de humedad</p>
-			<p class="viento">Viento: ${element.weather.wind_speed} km/h</p>
-			<p class="presion">Presión: ${element.weather.pressure} hPa</p>`;
-
-				contenedor.appendChild(ciudad);
-			}
-		}
-	});
-});
-
-botonProvincia.forEach((result) => {
-	result.addEventListener('click', function () {
-		contenedor.innerHTML = '';
+		contenedor.classList.remove('oculto');
+		resultados.classList.add('oculto');
+		seccionVolver[0].classList.add('oculto');
+		opcionesDeBusquedaMostradas.classList.add('oculto');
+		mapaPrincipal.classList.remove('oculto');
 		for (let i = 0; i < ciudades.length; i++) {
 			const element = ciudades[i];
 			if (result.textContent == element.province) {
@@ -194,7 +164,6 @@ buscador.addEventListener('input', mostrarResultados);
 
 function buscarPorSugerencia(lugar) {
 	let ciudad = ciudades.find((element) => element.name == lugar);
-	console.log(ciudad);
 	contenedor.classList.add('oculto');
 	resultados.classList.remove('oculto');
 	seccionVolver[0].classList.remove('oculto');
